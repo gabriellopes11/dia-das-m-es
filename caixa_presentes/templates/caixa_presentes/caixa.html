@@ -9,12 +9,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: pink;
-            color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* <= Aqui */
+    background-color: pink;
+    color: white;
+    flex-direction: column; /* permite que o conteúdo flua para baixo */
+    padding: 20px;
+    box-sizing: border-box;
         }
 
         h1, h2, p {
@@ -56,12 +59,53 @@
         .mensagem p {
             margin: 0;
         }
+        .carousel-container {
+    width: 100%;
+    overflow: hidden;
+    overflow-y: visible; /* permite ver a parte inferior das imagens, se necessário */
+    position: relative;
+    margin-top: 30px;
+}
+
+.carousel-track {
+    display: flex;
+     width: max-content; /* Garante que a track tenha largura suficiente para todas as imagens */
+    animation: scrollCarousel 30s linear infinite;
+    align-items: center; /* centraliza imagens verticalmente se houver altura extra */
+}
+
+.carousel-track img {
+   width: auto;      /* ou defina um máximo se quiser limitar */
+    max-width: 400px;
+    height: auto;
+    flex-shrink: 0;
+    margin: 0 10px;
+    border-radius: 30px;
+    border: 4px solid black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 
         .imagem-container img {
-            margin: 10px;
-            border-radius: 10px;
-            display: inline-block;
-        }
+    display: none;
+    width: 300px; /* ou outro valor desejado */
+    height: auto;
+    transition: opacity 0.5s ease;
+    margin: 0 auto;
+}
+
+.imagem-container img.ativa {
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -74,27 +118,43 @@
             <p>MAMUUUUSKA, feliz dia das mães te amo mais que tudo nesse mundo</p>
         </div>
    
-        <div class="imagem-container" id="imagens" style="display: none;">
-    <img src="{% static 'images/04cb8b90-ecfa-4e98-b298-2675fd41c915.png' %}" alt="Flor">
-    <img src="{% static 'images/foto.png' %}" alt="teste">
-    <img src="{% static 'images/foto1.png' %}" alt="teste1">
-    <img src="{% static 'images/foto2.png' %}" alt="teste2">
-    <img src="{% static 'images/foto3.png' %}" alt="teste3">
-    <img src="{% static 'images/foto4.png' %}" alt="teste4">
-    <img src="{% static 'images/foto5.png' %}" alt="teste5">
-    <img src="{% static 'images/foto6.png' %}" alt="teste6">
-    <img src="{% static 'images/foto7.png' %}" alt="teste7">
-    <img src="{% static 'images/foto8.png' %}" alt="teste8">
+        <div class="carousel-container" id="carousel" style="display: none;">
+    <div class="carousel-track">
+        <img src="{% static 'images/foto.png' %}" alt="foto">
+        <img src="{% static 'images/foto1.png' %}" alt="foto1">
+        <img src="{% static 'images/foto2.png' %}" alt="foto2">
+        <img src="{% static 'images/foto3.png' %}" alt="foto3">
+        <img src="{% static 'images/foto4.png' %}" alt="foto4">
+        <img src="{% static 'images/foto5.png' %}" alt="foto5">
+        <img src="{% static 'images/foto6.png' %}" alt="foto6">
+        <img src="{% static 'images/foto7.png' %}" alt="foto7">
+        <img src="{% static 'images/foto8.png' %}" alt="foto8">
+    </div>
 </div>
     </div>
 
     <script>
         function abrirCaixa() {
-    const mensagem = document.getElementById('mensagem');
-    const imagens = document.getElementById('imagens');
-    mensagem.style.display = 'block';
-    imagens.style.display = 'block';
+     const mensagem = document.getElementById('mensagem');
+    const imagensContainer = document.getElementById('carousel');
+const imagens = imagensContainer.querySelectorAll('img');
+     document.getElementById('mensagem').style.display = 'block';
+    document.getElementById('carousel').style.display = 'block';
     document.querySelector('.caixa').style.display = 'none';
+    let index = 0;
+
+    mensagem.style.display = 'block';
+    imagensContainer.style.display = 'block';
+    document.querySelector('.caixa').style.display = 'none';
+
+    imagens.forEach(img => img.classList.remove('ativa'));
+    imagens[index].classList.add('ativa');
+
+    setInterval(() => {
+        imagens[index].classList.remove('ativa');
+        index = (index + 1) % imagens.length;
+        imagens[index].classList.add('ativa');
+    }, 2000);
 }
 
         // Define tamanhos aleatórios para as imagens
