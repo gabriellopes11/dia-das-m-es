@@ -8,16 +8,17 @@
     <title>Caixa de Presentes - Dia das Mães</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* <= Aqui */
-    background-color: pink;
-    color: white;
-    flex-direction: column; /* permite que o conteúdo flua para baixo */
-    padding: 20px;
-    box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffcce6, #ffb3d9, #ff99cc);
+            color: white;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         h1, h2, p {
@@ -26,145 +27,314 @@
 
         .caixa-container {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .caixa {
-            width: 200px;
-            height: 200px;
-            background-color: #5f2844;
-            border-radius: 15px;
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(145deg, #d44a87, #8e4162);
+            border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 1.5em;
+            font-size: 1.6em;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .caixa:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
         }
 
         .caixa:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .caixa:active {
+            transform: scale(0.95);
         }
 
         .mensagem {
             display: none;
-            margin-top: 20px;
+            margin: 30px auto;
             font-size: 1.2em;
             color: #333;
-            background-color: #ffccff;
-            padding: 15px;
-            border-radius: 10px;
+            background-color: rgba(255, 204, 255, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            border: 3px solid #fff;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .mensagem p {
-            margin: 0;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .mensagem p:first-child {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d44a87;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .carousel-container {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     overflow: hidden;
-    overflow-y: visible; /* permite ver a parte inferior das imagens, se necessário */
     position: relative;
-    margin-top: 30px;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel-container::before,
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 192, 203, 0.8), transparent);
+}
+
+.carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 192, 203, 0.8), transparent);
 }
 
 .carousel-track {
     display: flex;
-     width: max-content; /* Garante que a track tenha largura suficiente para todas as imagens */
-    animation: scrollCarousel 30s linear infinite;
-    align-items: center; /* centraliza imagens verticalmente se houver altura extra */
+    width: max-content;
+    animation: scrollCarousel 40s linear infinite;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
 }
 
 .carousel-track img {
-   width: auto;      /* ou defina um máximo se quiser limitar */
+    height: 250px;
+    width: auto;
     max-width: 400px;
-    height: auto;
     flex-shrink: 0;
-    margin: 0 10px;
-    border-radius: 30px;
-    border: 4px solid black;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 0 15px;
+    border-radius: 15px;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.carousel-track img:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    position: relative;
+}
 
 @keyframes scrollCarousel {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(calc(-50%));
     }
 }
 
-        .imagem-container img {
-    display: none;
-    width: 300px; /* ou outro valor desejado */
-    height: auto;
-    transition: opacity 0.5s ease;
-    margin: 0 auto;
+/* Animação de entrada do carrossel */
+.carousel-container {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.imagem-container img.ativa {
-    display: block;
+.carousel-container.ativo {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Efeito de pulsação nas bordas */
+@keyframes pulseBorder {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.carousel-track img:hover {
+    animation: pulseBorder 1.5s infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .carousel-track img {
+        height: 180px;
+        margin: 0 10px;
+    }
+
+    .carousel-container {
+        width: 95%;
+        padding: 10px 0;
+    }
 }
     </style>
 </head>
 <body>
 
+    <h1 style="color: #d44a87; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); margin-bottom: 30px; text-align: center; font-size: 2.5rem; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto;">Feliz Dia das Mães! 🌸</h1>
+
     <div class="caixa-container">
-        <div class="caixa" onclick="abrirCaixa()">🎁 Clique para abrir a Caixa de Presentes</div>
-        
+        <div class="caixa" onclick="abrirCaixa()">🎁 Clique para abrir seu presente especial</div>
+
         <div class="mensagem" id="mensagem">
-            <p>Feliz Dia das Mães! 🌸💖</p>
-            <p>MAMUUUUSKA, feliz dia das mães te amo mais que tudo nesse mundo</p>
+            <p>✨ Feliz Dia das Mães! 🌸💖✨</p>
+            <p>MAMUUUUSKA, feliz dia das mães! Te amo mais que tudo nesse mundo.</p>
+            <p>Obrigado por todo seu amor, carinho e dedicação. Você é incrível!</p>
+            <p>💝 Com todo meu amor 💝</p>
         </div>
-   
+
         <div class="carousel-container" id="carousel" style="display: none;">
     <div class="carousel-track">
-        <img src="{% static 'images/foto.png' %}" alt="foto">
-        <img src="{% static 'images/foto1.png' %}" alt="foto1">
-        <img src="{% static 'images/foto2.png' %}" alt="foto2">
-        <img src="{% static 'images/foto3.png' %}" alt="foto3">
-        <img src="{% static 'images/foto4.png' %}" alt="foto4">
-        <img src="{% static 'images/foto5.png' %}" alt="foto5">
-        <img src="{% static 'images/foto6.png' %}" alt="foto6">
-        <img src="{% static 'images/foto7.png' %}" alt="foto7">
-        <img src="{% static 'images/foto8.png' %}" alt="foto8">
+        <!-- Imagens originais -->
+        <img src="{% static 'images/foto.png' %}" alt="foto" class="carousel-img">
+        <img src="{% static 'images/foto1.png' %}" alt="foto1" class="carousel-img">
+        <img src="{% static 'images/foto2.png' %}" alt="foto2" class="carousel-img">
+        <img src="{% static 'images/foto3.png' %}" alt="foto3" class="carousel-img">
+        <img src="{% static 'images/foto4.png' %}" alt="foto4" class="carousel-img">
+        <img src="{% static 'images/foto5.png' %}" alt="foto5" class="carousel-img">
+        <img src="{% static 'images/foto6.png' %}" alt="foto6" class="carousel-img">
+        <img src="{% static 'images/foto7.png' %}" alt="foto7" class="carousel-img">
+        <img src="{% static 'images/foto8.png' %}" alt="foto8" class="carousel-img">
+
+        <!-- Duplicação para loop contínuo -->
+        <img src="{% static 'images/foto.png' %}" alt="foto duplicada" class="carousel-img">
+        <img src="{% static 'images/foto1.png' %}" alt="foto1 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto2.png' %}" alt="foto2 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto3.png' %}" alt="foto3 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto4.png' %}" alt="foto4 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto5.png' %}" alt="foto5 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto6.png' %}" alt="foto6 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto7.png' %}" alt="foto7 duplicada" class="carousel-img">
+        <img src="{% static 'images/foto8.png' %}" alt="foto8 duplicada" class="carousel-img">
     </div>
 </div>
     </div>
 
     <script>
         function abrirCaixa() {
-     const mensagem = document.getElementById('mensagem');
-    const imagensContainer = document.getElementById('carousel');
-const imagens = imagensContainer.querySelectorAll('img');
-     document.getElementById('mensagem').style.display = 'block';
-    document.getElementById('carousel').style.display = 'block';
-    document.querySelector('.caixa').style.display = 'none';
-    let index = 0;
+            const mensagem = document.getElementById('mensagem');
+            const carouselContainer = document.getElementById('carousel');
 
-    mensagem.style.display = 'block';
-    imagensContainer.style.display = 'block';
-    document.querySelector('.caixa').style.display = 'none';
+            // Exibe a mensagem e o carrossel
+            mensagem.style.display = 'block';
+            carouselContainer.style.display = 'block';
 
-    imagens.forEach(img => img.classList.remove('ativa'));
-    imagens[index].classList.add('ativa');
+            // Garante que a mensagem esteja centralizada
+            mensagem.style.position = 'relative';
+            mensagem.style.left = '50%';
+            mensagem.style.transform = 'translateX(-50%)';
 
-    setInterval(() => {
-        imagens[index].classList.remove('ativa');
-        index = (index + 1) % imagens.length;
-        imagens[index].classList.add('ativa');
-    }, 2000);
-}
+            // Esconde a caixa
+            document.querySelector('.caixa').style.display = 'none';
 
-        // Define tamanhos aleatórios para as imagens
-        window.addEventListener('DOMContentLoaded', () => {
-            const imagens = document.querySelectorAll('.imagem-container img');
+            // Adiciona uma classe para animar a entrada do carrossel
+            setTimeout(() => {
+                carouselContainer.classList.add('ativo');
+
+                // Garante que o carrossel esteja centralizado
+                carouselContainer.style.position = 'relative';
+                carouselContainer.style.left = '50%';
+                carouselContainer.style.transform = 'translateX(-50%)';
+            }, 100);
+
+            // Adiciona efeito de hover nas imagens
+            const imagens = carouselContainer.querySelectorAll('img');
             imagens.forEach(img => {
-                const tamanhoAleatorio = Math.floor(Math.random() * (160 - 80 + 1)) + 80; // entre 80px e 160px
-                img.style.width = `${tamanhoAleatorio}px`;
-                img.style.height = 'auto';
+                img.addEventListener('mouseenter', () => {
+                    img.style.zIndex = '10';
+                });
+
+                img.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                        img.style.zIndex = '';
+                    }, 300);
+                });
             });
+        }
+
+        // Adiciona efeito de confete quando a página carrega
+        window.addEventListener('DOMContentLoaded', () => {
+            // Prepara o carrossel para animação suave
+            const carouselTrack = document.querySelector('.carousel-track');
+            if (carouselTrack) {
+                // Garante que o carrossel tenha uma transição suave
+                carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+
+                // Adiciona evento para pausar a animação no hover
+                carouselTrack.addEventListener('mouseenter', () => {
+                    carouselTrack.style.animationPlayState = 'paused';
+                });
+
+                carouselTrack.addEventListener('mouseleave', () => {
+                    carouselTrack.style.animationPlayState = 'running';
+                });
+            }
         });
     </script>
 
