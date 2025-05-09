@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-           background-color: pink;
+            background-color: pink;
             color: white;
         }
 
@@ -28,7 +28,7 @@
         .caixa {
             width: 200px;
             height: 200px;
-            background-color: #ff99cc;
+            background-color: #5f2844;
             border-radius: 15px;
             display: flex;
             justify-content: center;
@@ -56,26 +56,30 @@
         .mensagem p {
             margin: 0;
         }
+
+        .imagem-container img {
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
     <div class="caixa-container">
         <div class="caixa" onclick="abrirCaixa()">🎁 Clique para abrir a Caixa de Presentes</div>
+        
         <div class="mensagem" id="mensagem">
             <p>Feliz Dia das Mães! 🌸💖</p>
-            <p>MAMUUUUSKA,feliz dia das mães te amo mais que tudo nesse mundo</p> </div>
-   
-       <div class="imagem-container">
-
-
-<img src="{% static 'images/04cb8b90-ecfa-4e98-b298-2675fd41c915.png' %}" alt="Flor">
-
-</div>
-
-
-
+            <p>MAMUUUUSKA, feliz dia das mães te amo mais que tudo nesse mundo</p>
         </div>
+   
+        <div class="imagem-container">
+            <img src="{% static 'images/04cb8b90-ecfa-4e98-b298-2675fd41c915.png' %}" alt="Flor">
+            <img src="{% static 'images/foto.png' %}" alt="teste">
+            <img src="{% static 'images/foto1.png' %}" alt="teste1">
+        </div>
+    </div>
 
     <script>
         function abrirCaixa() {
@@ -83,6 +87,16 @@
             mensagem.style.display = 'block';
             document.querySelector('.caixa').style.display = 'none';
         }
+
+        // Define tamanhos aleatórios para as imagens
+        window.addEventListener('DOMContentLoaded', () => {
+            const imagens = document.querySelectorAll('.imagem-container img');
+            imagens.forEach(img => {
+                const tamanhoAleatorio = Math.floor(Math.random() * (160 - 80 + 1)) + 80; // entre 80px e 160px
+                img.style.width = `${tamanhoAleatorio}px`;
+                img.style.height = 'auto';
+            });
+        });
     </script>
 
 </body>
