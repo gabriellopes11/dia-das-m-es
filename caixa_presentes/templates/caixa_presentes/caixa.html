@@ -74,19 +74,28 @@
             <p>MAMUUUUSKA, feliz dia das mães te amo mais que tudo nesse mundo</p>
         </div>
    
-        <div class="imagem-container">
-            <img src="{% static 'images/04cb8b90-ecfa-4e98-b298-2675fd41c915.png' %}" alt="Flor">
-            <img src="{% static 'images/foto.png' %}" alt="teste">
-            <img src="{% static 'images/foto1.png' %}" alt="teste1">
-        </div>
+        <div class="imagem-container" id="imagens" style="display: none;">
+    <img src="{% static 'images/04cb8b90-ecfa-4e98-b298-2675fd41c915.png' %}" alt="Flor">
+    <img src="{% static 'images/foto.png' %}" alt="teste">
+    <img src="{% static 'images/foto1.png' %}" alt="teste1">
+    <img src="{% static 'images/foto2.png' %}" alt="teste2">
+    <img src="{% static 'images/foto3.png' %}" alt="teste3">
+    <img src="{% static 'images/foto4.png' %}" alt="teste4">
+    <img src="{% static 'images/foto5.png' %}" alt="teste5">
+    <img src="{% static 'images/foto6.png' %}" alt="teste6">
+    <img src="{% static 'images/foto7.png' %}" alt="teste7">
+    <img src="{% static 'images/foto8.png' %}" alt="teste8">
+</div>
     </div>
 
     <script>
         function abrirCaixa() {
-            const mensagem = document.getElementById('mensagem');
-            mensagem.style.display = 'block';
-            document.querySelector('.caixa').style.display = 'none';
-        }
+    const mensagem = document.getElementById('mensagem');
+    const imagens = document.getElementById('imagens');
+    mensagem.style.display = 'block';
+    imagens.style.display = 'block';
+    document.querySelector('.caixa').style.display = 'none';
+}
 
         // Define tamanhos aleatórios para as imagens
         window.addEventListener('DOMContentLoaded', () => {
