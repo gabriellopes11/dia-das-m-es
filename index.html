@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -129,217 +127,216 @@
             }
         }
         .carousel-container {
-    width: 90%;
-    max-width: 1200px;
-    overflow: hidden;
-    position: relative;
-    margin: 30px auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
+            width: 90%;
+            max-width: 1200px;
+            overflow: hidden;
+            position: relative;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-.carousel-container::before,
-.carousel-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
+        .carousel-container::before,
+        .carousel-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
 
-.carousel-container::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(255, 192, 203, 0.8), transparent);
-}
+        .carousel-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 192, 203, 0.8), transparent);
+        }
 
-.carousel-container::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(255, 192, 203, 0.8), transparent);
-}
+        .carousel-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 192, 203, 0.8), transparent);
+        }
 
-.carousel-track {
-    display: flex;
-    width: max-content;
-    animation: scrollCarousel 40s linear infinite;
-    align-items: center;
-    padding: 10px 0;
-}
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: scrollCarousel 40s linear infinite;
+            align-items: center;
+            padding: 10px 0;
+        }
 
-.carousel-track:hover {
-    animation-play-state: paused;
-}
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
 
-.carousel-track img {
-    height: 250px;
-    width: auto;
-    max-width: 400px;
-    flex-shrink: 0;
-    margin: 0 15px;
-    border-radius: 15px;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .carousel-track img {
+            height: 250px;
+            width: auto;
+            max-width: 400px;
+            flex-shrink: 0;
+            margin: 0 15px;
+            border-radius: 15px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-/* Efeito hover apenas para dispositivos não-touch */
-@media (hover: hover) {
-    .carousel-track img:hover {
-        transform: scale(1.05) translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        z-index: 10;
-        position: relative;
-    }
-}
+        /* Efeito hover apenas para dispositivos não-touch */
+        @media (hover: hover) {
+            .carousel-track img:hover {
+                transform: scale(1.05) translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+                z-index: 10;
+                position: relative;
+            }
+        }
 
-@keyframes scrollCarousel {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-50%));
-    }
-}
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50%));
+            }
+        }
 
-/* Animação de entrada do carrossel */
-.carousel-container {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
+        /* Animação de entrada do carrossel */
+        .carousel-container {
+            opacity: 0;
+            transform: translateX(-50%) translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
 
-.carousel-container.ativo {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
+        .carousel-container.ativo {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
 
-/* Efeito de pulsação nas bordas */
-@keyframes pulseBorder {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
+        /* Efeito de pulsação nas bordas */
+        @keyframes pulseBorder {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
 
-.carousel-track img:hover {
-    animation: pulseBorder 1.5s infinite;
-}
+        .carousel-track img:hover {
+            animation: pulseBorder 1.5s infinite;
+        }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
 
-    h1 {
-        font-size: 2rem !important;
-        margin-bottom: 20px !important;
-    }
+            h1 {
+                font-size: 2rem !important;
+                margin-bottom: 20px !important;
+            }
 
-    .caixa {
-        width: 180px;
-        height: 180px;
-        font-size: 1.3em;
-    }
+            .caixa {
+                width: 180px;
+                height: 180px;
+                font-size: 1.3em;
+            }
 
-    .mensagem {
-        width: 95%;
-        padding: 15px;
-        font-size: 1.1em;
-    }
+            .mensagem {
+                width: 95%;
+                padding: 15px;
+                font-size: 1.1em;
+            }
 
-    .mensagem p:first-child {
-        font-size: 1.3em;
-    }
+            .mensagem p:first-child {
+                font-size: 1.3em;
+            }
 
-    .carousel-track img {
-        height: 150px;
-        margin: 0 8px;
-        border-width: 3px;
-    }
+            .carousel-track img {
+                height: 150px;
+                margin: 0 8px;
+                border-width: 3px;
+            }
 
-    .carousel-container {
-        width: 95%;
-        padding: 10px 0;
-        margin-top: 20px;
-    }
+            .carousel-container {
+                width: 95%;
+                padding: 10px 0;
+                margin-top: 20px;
+            }
 
-    .carousel-container::before,
-    .carousel-container::after {
-        width: 50px;
-    }
-}
+            .carousel-container::before,
+            .carousel-container::after {
+                width: 50px;
+            }
+        }
 
-/* Ajustes para telas muito pequenas */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem !important;
-    }
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem !important;
+            }
 
-    .caixa {
-        width: 160px;
-        height: 160px;
-        font-size: 1.2em;
-    }
+            .caixa {
+                width: 160px;
+                height: 160px;
+                font-size: 1.2em;
+            }
 
-    .mensagem {
-        padding: 12px;
-        font-size: 1em;
-    }
+            .mensagem {
+                padding: 12px;
+                font-size: 1em;
+            }
 
-    .carousel-track img {
-        height: 120px;
-        margin: 0 5px;
-    }
+            .carousel-track img {
+                height: 120px;
+                margin: 0 5px;
+            }
 
-    .carousel-container::before,
-    .carousel-container::after {
-        width: 30px;
-    }
-}
+            .carousel-container::before,
+            .carousel-container::after {
+                width: 30px;
+            }
+        }
 
-/* Ajustes para telas extremamente pequenas */
-@media (max-width: 360px) {
-    h1 {
-        font-size: 1.5rem !important;
-    }
+        /* Ajustes para telas extremamente pequenas */
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.5rem !important;
+            }
 
-    .caixa {
-        width: 140px;
-        height: 140px;
-        font-size: 1.1em;
-    }
+            .caixa {
+                width: 140px;
+                height: 140px;
+                font-size: 1.1em;
+            }
 
-    .mensagem {
-        padding: 10px;
-        font-size: 0.9em;
-        width: 98%;
-    }
+            .mensagem {
+                padding: 10px;
+                font-size: 0.9em;
+                width: 98%;
+            }
 
-    .carousel-track img {
-        height: 100px;
-        margin: 0 3px;
-        border-width: 2px;
-    }
+            .carousel-track img {
+                height: 100px;
+                margin: 0 3px;
+                border-width: 2px;
+            }
 
-    .carousel-container {
-        padding: 5px 0;
-    }
-}
+            .carousel-container {
+                padding: 5px 0;
+            }
+        }
     </style>
 </head>
 <body>
-
     <h1 style="color: #d44a87; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); margin-bottom: 30px; text-align: center; font-size: 2.5rem; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto;">Feliz Dia das Mães! 🌸</h1>
 
     <div class="caixa-container">
@@ -353,30 +350,30 @@
         </div>
 
         <div class="carousel-container" id="carousel" style="display: none;">
-    <div class="carousel-track">
-        <!-- Imagens originais -->
-        <img src="{% static 'images/foto.png' %}" alt="foto" class="carousel-img">
-        <img src="{% static 'images/foto1.png' %}" alt="foto1" class="carousel-img">
-        <img src="{% static 'images/foto2.png' %}" alt="foto2" class="carousel-img">
-        <img src="{% static 'images/foto3.png' %}" alt="foto3" class="carousel-img">
-        <img src="{% static 'images/foto4.png' %}" alt="foto4" class="carousel-img">
-        <img src="{% static 'images/foto5.png' %}" alt="foto5" class="carousel-img">
-        <img src="{% static 'images/foto6.png' %}" alt="foto6" class="carousel-img">
-        <img src="{% static 'images/foto7.png' %}" alt="foto7" class="carousel-img">
-        <img src="{% static 'images/foto8.png' %}" alt="foto8" class="carousel-img">
+            <div class="carousel-track">
+                <!-- Imagens originais -->
+                <img src="static/images/foto.png" alt="foto" class="carousel-img">
+                <img src="static/images/foto1.png" alt="foto1" class="carousel-img">
+                <img src="static/images/foto2.png" alt="foto2" class="carousel-img">
+                <img src="static/images/foto3.png" alt="foto3" class="carousel-img">
+                <img src="static/images/foto4.png" alt="foto4" class="carousel-img">
+                <img src="static/images/foto5.png" alt="foto5" class="carousel-img">
+                <img src="static/images/foto6.png" alt="foto6" class="carousel-img">
+                <img src="static/images/foto7.png" alt="foto7" class="carousel-img">
+                <img src="static/images/foto8.png" alt="foto8" class="carousel-img">
 
-        <!-- Duplicação para loop contínuo -->
-        <img src="{% static 'images/foto.png' %}" alt="foto duplicada" class="carousel-img">
-        <img src="{% static 'images/foto1.png' %}" alt="foto1 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto2.png' %}" alt="foto2 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto3.png' %}" alt="foto3 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto4.png' %}" alt="foto4 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto5.png' %}" alt="foto5 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto6.png' %}" alt="foto6 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto7.png' %}" alt="foto7 duplicada" class="carousel-img">
-        <img src="{% static 'images/foto8.png' %}" alt="foto8 duplicada" class="carousel-img">
-    </div>
-</div>
+                <!-- Duplicação para loop contínuo -->
+                <img src="static/images/foto.png" alt="foto duplicada" class="carousel-img">
+                <img src="static/images/foto1.png" alt="foto1 duplicada" class="carousel-img">
+                <img src="static/images/foto2.png" alt="foto2 duplicada" class="carousel-img">
+                <img src="static/images/foto3.png" alt="foto3 duplicada" class="carousel-img">
+                <img src="static/images/foto4.png" alt="foto4 duplicada" class="carousel-img">
+                <img src="static/images/foto5.png" alt="foto5 duplicada" class="carousel-img">
+                <img src="static/images/foto6.png" alt="foto6 duplicada" class="carousel-img">
+                <img src="static/images/foto7.png" alt="foto7 duplicada" class="carousel-img">
+                <img src="static/images/foto8.png" alt="foto8 duplicada" class="carousel-img">
+            </div>
+        </div>
     </div>
 
     <script>
@@ -501,8 +498,17 @@
             // Define a altura inicial e atualiza quando a janela é redimensionada
             setViewportHeight();
             window.addEventListener('resize', setViewportHeight);
+
+            // Verifica se as imagens estão carregando corretamente
+            const imagens = document.querySelectorAll('.carousel-img');
+            imagens.forEach(img => {
+                img.addEventListener('error', () => {
+                    console.error(`Erro ao carregar imagem: ${img.src}`);
+                    // Tenta carregar uma imagem de fallback
+                    img.src = 'https://via.placeholder.com/300x200/ffccff/d44a87?text=Imagem+não+encontrada';
+                });
+            });
         });
     </script>
-
 </body>
 </html>
